@@ -1,7 +1,7 @@
 {
-  "name": "lavyl-marketing",
+  "name": "lavyl-auricum",
   "version": "1.0.0",
-  "description": "lavyl 10 marketing pages",
+  "description": "lavyl marketing page",
   "main": "build/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

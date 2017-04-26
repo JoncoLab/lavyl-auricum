@@ -1,7 +1,9 @@
 header {
-  min-height: $line * 10;
   border: {
-    bottom: $line / 5 solid red;
+    bottom: $line / 5 solid $lightgrey;
+  }
+  padding: {
+    bottom: 0;
   }
 
   .logo {
@@ -19,15 +21,28 @@ header {
 
   .languages {
     padding: 0;
+    margin: 0;
     list-style: none;
     display: flex;
-    margin: 0 auto;
-    width: 30%;
+    justify-content: center;
 
     li {
       padding: $line / 2;
       font: {
         weight: bold;
+      }
+      margin: 0 $line / 5 0 0;
+
+      transition: {
+        duration: $time;
+        timing-function: ease-out;
+      }
+
+      cursor: pointer;
+
+      &:hover {
+        color: $green;
+        box-shadow: 0 $line / 2 0 0 $green;
       }
     }
   }

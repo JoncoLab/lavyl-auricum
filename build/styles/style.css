@@ -9,9 +9,9 @@ html
 
 body header
 {
-    min-height: 100px;
+    padding-bottom: 0; 
 
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #e1e1e1;
 }
 body header .logo
 {
@@ -31,15 +31,41 @@ body header .languages
     display: -ms-flexbox;
     display: flex;
 
-    width: 30%; 
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
 
     list-style: none;
+
+    -webkit-box-pack: center;
+
+    -webkit-justify-content: center;
+
+       -moz-box-pack: center;
+
+        -ms-flex-pack: center;
+
+            justify-content: center;
 }
 body header .languages li
 {
-    font-weight: bold; 
+    font-weight: bold;
 
+    margin: 0 2px 0 0;
     padding: 5px;
+
+    cursor: pointer; 
+    -webkit-transition-timing-function: ease-out; 
+       -moz-transition-timing-function: ease-out; 
+         -o-transition-timing-function: ease-out; 
+            transition-timing-function: ease-out;
+    -webkit-transition-duration: .3s;
+       -moz-transition-duration: .3s;
+         -o-transition-duration: .3s;
+            transition-duration: .3s;
+}
+body header .languages li:hover
+{
+    color: #93c35c;
+    -webkit-box-shadow: 0 5px 0 0 #93c35c;
+            box-shadow: 0 5px 0 0 #93c35c;
 }

@@ -1,5 +1,51 @@
 main {
-  background: {
-    color: $lightblue;
-  }
+    .classic {
+      div {
+        .image {
+
+        }
+      }
+      div {
+        .info {
+             p {
+
+             }
+             article {
+               p {
+
+               }
+             }
+        }
+      }
+    }
+    .sensetive {
+      div {
+        .image {
+
+        }
+      }
+      div {
+        .info {
+
+          p {
+
+          }
+          article {
+            p {
+
+            }
+          }
+        }
+      }
+    }
+    .sale {
+      table {
+
+      }
+    }
+    .buttons {
+      input {
+
+      }
+    }
 }

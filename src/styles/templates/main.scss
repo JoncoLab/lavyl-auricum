@@ -9,10 +9,14 @@ main {
   .content-item {
     width: 60%;
     margin: 0 0 $line * 10 0;
+    background: {
+      color: $bg;
+    }
     overflow: {
       x: hidden;
       y: hidden;
     }
+    box-shadow: 0 0 $line / 5 $line / 10 $grey;
 
     .item-caption {
       padding: $line * 2;
@@ -29,6 +33,7 @@ main {
 
       small {
         display: flex;
+        justify-content: space-between;
         color: $black;
         font: {
           size: $line * 2;
@@ -36,12 +41,28 @@ main {
           family: Arial, sans-serif;
         }
 
-        #small-item {
+        #small-item,
+        #big-item,
+        #small-item-sens,
+        #big-item-sens {
+          cursor: pointer;
+          padding: $line / 2;
+          transition: {
+            duration: $time / 2;
+            timing-function: linear;
+          }
 
           &.current {
             color: $bg;
             background: {
               color: $lightblue;
+            }
+          }
+
+          &:hover {
+            color: $bg;
+            background: {
+              color: darken($lightblue, 10);
             }
           }
         }
@@ -91,11 +112,6 @@ main {
           @include button;
         }
       }
-    }
-
-    .big-item,
-    .big-item-sens {
-      display: none;
     }
   }
 }

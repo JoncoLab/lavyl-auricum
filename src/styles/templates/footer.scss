@@ -38,6 +38,10 @@ footer {
           style: solid;
           color: $grey;
         }
+        overflow: {
+          x: hidden;
+          y: hidden;
+        }
 
         img {
           width: 100%;
@@ -69,9 +73,22 @@ footer {
             size: $line * 1.5;
           }
           z-index: 50;
+          transform: scaleY(0);
+          transform-origin: bottom;
+          transition: {
+            duration: $time / 2;
+            timing-function: linear;
+          }
 
           .confirm-order {
             @include button;
+          }
+        }
+
+        &:hover {
+
+          .add-info {
+            transform: scaleY(1);
           }
         }
       }

@@ -10,7 +10,7 @@ html {
 
 body {
   background: {
-    color: white;
+    color: lighten($lightgrey, 5);
   }
 
   @import "templates/header";

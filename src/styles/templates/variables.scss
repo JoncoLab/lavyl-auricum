@@ -8,3 +8,43 @@ $darkblue: #667f9e;
 $grey: #717171;
 $lightgrey: #e1e1e1;
 $green: #93c35c;
+$black: #232323;
+
+@mixin caption {
+  margin: 0;
+  padding: 0;
+  color: $grey;
+  text: {
+    transform: uppercase;
+  }
+
+  .subcaption {
+    color: $lightblue;
+  }
+}
+
+@mixin button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: $line * 1.5 $line * 2;
+  background: {
+    color: $green;
+  }
+  color: $bg;
+  font: {
+    family: Arial, sans-serif;
+    size: $line * 1.5;
+  }
+  transition: {
+    duration: $time / 2;
+    timing-function: linear;
+  }
+
+  &:hover {
+    background: {
+      color: darken($green, 5);
+    }
+    box-shadow: $line / 2 $line / 2 0 0 transparentize($green, 0.5);
+  }
+}

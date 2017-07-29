@@ -1,0 +1,1 @@
+var main=function(){var e=($(".small-item"),$(".big-item"),$(".small-item-sens"),$(".big-item-sens"),$("#small-item"));$("#big-item"),$("#small-item-sens"),$("#big-item-sens");e.addClass("current")};$(document).ready(main);

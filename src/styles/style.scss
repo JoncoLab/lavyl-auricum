@@ -9,6 +9,10 @@ html {
 }
 
 body {
+  background: {
+    color: white;
+  }
+
   @import "templates/header";
   @import "templates/main";
   @import "templates/footer";

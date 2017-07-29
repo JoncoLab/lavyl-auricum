@@ -1,50 +1,34 @@
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: $line 0;
+  background: {
+    color: $bg;
+  }
   border: {
-    bottom: $line / 5 solid $lightblue;
+    bottom: $line / 2 solid $lightblue;
   }
-  padding: {
-    bottom: 0;
+  font: {
+    family: Arial, sans-serif;
+    size: $line * 2;
   }
+  text: {
+    align: center;
+  }
+  z-index: 100;
 
-  .logo {
-    color: $grey;
-    text: {
-      align: center;
-    }
-
-    span {
-      &:first-child {
-        color: $lightblue;
-      }
-    }
-
+  .header-caption {
+    @include caption;
   }
 
-  .languages {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-
-    li {
-      padding: $line / 2;
-      font: {
-        weight: bold;
-      }
-      margin: 0 $line / 5 0 0;
-
-      transition: {
-        duration: $time;
-        timing-function: ease-out;
-      }
-
-      cursor: pointer;
-
-      &:hover {
-        color: $green;
-        box-shadow: 0 $line / 2 0 0 $green;
-      }
-    }
-}
+  .confirm-order {
+    position: absolute;
+    right: 2%;
+    @include button;
+  }
 }

@@ -1,51 +1,101 @@
 main {
-    .classic {
-      div {
-        .image {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: $line * 20 0 0 0;
 
-        }
-      }
-      div {
-        .info {
-             p {
-
-             }
-             article {
-               p {
-
-               }
-             }
-        }
-      }
+  .content-item {
+    width: 60%;
+    margin: 0 0 $line * 10 0;
+    overflow: {
+      x: hidden;
+      y: hidden;
     }
-    .sensetive {
-      div {
-        .image {
 
-        }
+    .item-caption {
+      padding: $line * 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: {
+        bottom: $line / 2 solid $grey;
       }
-      div {
-        .info {
 
-          p {
+      h2 {
+        @include caption;
+      }
 
-          }
-          article {
-            p {
+      small {
+        display: flex;
+        color: $black;
+        font: {
+          size: $line * 2;
+          weight: bold;
+          family: Arial, sans-serif;
+        }
 
+        #small-item {
+
+          &.current {
+            color: $bg;
+            background: {
+              color: $lightblue;
             }
           }
         }
       }
     }
-    .sale {
-      table {
 
+    .small-item,
+    .big-item,
+    .small-item-sens,
+    .big-item-sens {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: $line * 2 0;
+
+      .item-photo {
+        width: 30%;
+      }
+
+      .item-description {
+        width: 30%;
+        color: $grey;
+        font: {
+          family: Arial, sans-serif;
+          size: $line * 1.8;
+        }
+        text-align: left;
+      }
+
+      .column {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .item-price {
+          color: black;
+          font: {
+            family: Arial, sans-serif;
+            weight: bold;
+            size: $line * 2;
+          }
+        }
+
+        .confirm-order {
+          @include button;
+        }
       }
     }
-    .buttons {
-      input {
 
-      }
+    .big-item,
+    .big-item-sens {
+      display: none;
     }
+  }
 }

@@ -21,7 +21,11 @@ var gulp = require("gulp"),
             img: 'src/images/*.png',
             svg: 'src/SVG/*.svg',
             font: 'src/fonts/*.ttf',
-            js: 'src/scripts/js/*.js',
+            js: [
+                'src/scripts/js/*.js',
+                'src/scripts/js/controllers/*.js',
+                'src/scripts/js/directives/*.js'
+            ],
             zip: [
                 'build/*',
                 'build/**/*',
@@ -50,7 +54,9 @@ var gulp = require("gulp"),
             ],
             scripts: [
                 'src/scripts/php/*.php',
-                'src/scripts/js/*.js'
+                'src/scripts/js/*.js',
+                'src/scripts/js/controllers/*.js',
+                'src/scripts/js/directives/*.js'
             ],
             styles: [
                 'src/styles/*.scss',

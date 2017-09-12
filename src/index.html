@@ -1,74 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="LavylAuricumApp">
 <head>
     <meta charset="UTF-8">
     <title>Lavyl Auricum</title>
     <link href="styles/style.css" rel="stylesheet">
+    <script src="scripts/js/angular.min.js"></script>
     <script src="scripts/js/jquery-3.2.1.min.js"></script>
     <script src="scripts/js/script.js"></script>
 </head>
-<body>
-//= modules/header.html
+<body ng-controller="MainController">
+<custom-header></custom-header>
 <main>
-    <section class="content-item">
+    <order></order>
+    <feedback></feedback>
+    <section class="first-item">
         <div class="item-caption">
-            <h2>
-                Lavyl <span class="subcaption">Auricum</span>
-            </h2>
-            <small class="amount">
-                <span id="small-item">50 мл.</span>
-                <span id="big-item">150 мл.</span>
-            </small>
+            <h2>{{ products[0].name }}</h2>
+            <div class="amount">
+                <button class="first-small-item">{{ products[0].amount }}</button>
+                <button class="first-big-item">{{ products[1].amount }}</button>
+            </div>
         </div>
-        <article class="small-item">
-            <img class="item-photo" src="images/item-1.png">
-            <p class="item-description">Универсальное средство от множества проблем Вашего организма.
-                При решении острых проблем рекомендуется использование Lavyl Auricum.</p>
-            <div class="column">
-                <p class="item-price">Цена - 990.60 грн.</p>
-                <button class="confirm-order">Оформить заказ</button>
+        <section class="small-item">
+            <div class="images">
+                <img ng-src="{{ products[0].front }}" />
+                <img ng-src="{{ products[0].back }}" />
             </div>
-        </article>
-        <article class="big-item">
-            <img class="item-photo" src="images/item-2.png">
-            <p class="item-description">Универсальное средство от множества проблем Вашего организма.
-                Отлично справляется с любой проблемой в очень короткие сроки.</p>
-            <div class="column">
-                <p class="item-price">Цена - 2 362.20 грн.</p>
-                <button class="confirm-order">Оформить заказ</button>
+            <div class="small-item-desc">
+                <h3 class="desc">Описание</h3>
+                <div class="paragraph-desc">
+                    <p>LavylAurikum — много функциональный препарат, широкого спектра действия.</p>
+                    <p>Жизнь полна неожиданностей — травмы, ожоги, заболевания – это тоже часть нашей жизни и как правило
+                        не очень приятной. Как же хорошо иметь под рукой препарат, который может в короткие сроки избавить
+                        от любой проблемы, даже хронического характера.</p>
+                    <p>Первую и очень эффективную помощь Вам окажет Lavyl Auriсum. Нанесение этого препарата на кожу
+                        поможет остановить кровотечение, окажет сильное и быстрое обезболивающее и ранозаживляющее действие,
+                        снимет любые воспаление. Изготовленый из натурального сырья, из экологически чистых районах планеты,
+                        что и является гарантией его уникального действия.</p>
+                    <p>В любом случае этот препарат заменит в Вашей аптеке несколько различных средств, решит Ваши проблемы
+                        в сложных и неожиданных ситуациях, будет полезен Вам, Вашему ребенку и даже Вашим домашним питомцам.</p>
+                    <p>Вы обожглись или порезались, у вас воспалился укус насекомого? Первую и очень эффективную помощь вам
+                        окажет LavylAuriсum. Нанесение этого спрея на кожу поможет остановить кровотечение, окажет выраженное
+                        обезболивающее и ранозаживляющее действие, снимет воспаление.Да что же это за чудо препарат, спросите
+                        вы. Выполненный из натурального сырья, добытого в самых экологически чистых районах планеты,
+                        LAVYL AURICUM приготовлен с применением современных нанотехнологий, что и является гарантией его уникального действия.</p>
+                </div>
+                <h3 class="instruction">Инструкция применения</h3>
+                <p class="paragraph-instruction">Требуемое количество наносить равномерно на очищенную, сухую кожу, втереть и/или дать впитаться.
+                    В острых случаях используется в небольшом количестве, но часто. При хронических проблемах — не
+                    более пяти раз в день. Избегать попадания в глаза! Хранить в сухом, прохладном месте, желательно
+                    в темном. При использовании продукции важно помнить, что она очень экономична и применяется малыми
+                    дозами. Перед употреблением обязательно встряхивать все жидкие формы. Не допускать попадания в руки детей!</p>
+                <h3 class="consistency">Состав</h3>
+                <p class="paragraph-consistency">Aqua, Alcohol, Citrus Medica Vulgaris Peel Oil, Ribes Rubrum Fruit Extract, Tocopheryl Acetate,
+                    Lecithin, Retinyl Palmitate, Eucalyptus Globulus Leaf Oil, Citrus Aurantium Dulcis Oil, Melissa
+                    Officinalis Leaf Oil, Cananga Odorata Leaf Oil, Melaleuca Alternifolia Leaf Oil, Rosmarinus
+                    Officinalis Leaf Oil, Litsea Cubeba Fruit Oil.</p>
             </div>
-        </article>
+            <div>
+                <span class="small-item-price">Цена: {{ products[0].price | currency:" UAH ₴ " }}</span>
+                <button class="order">Оформить Заказ</button>
+            </div>
+        </section>
+        <section class="big-item">
+            <div class="images">
+                <img ng-src="{{ products[1].front }}" />
+                <img ng-src="{{ products[1].back }}" />
+            </div>
+            <div class="big-item-desc">
+                <h3 class="desc">Описание</h3>
+                <div class="paragraph-desc">
+                    <p>LavylAurikum — много функциональный препарат, широкого спектра действия.</p>
+                    <p>Жизнь полна неожиданностей — травмы, ожоги, заболевания – это тоже часть нашей жизни и как правило
+                        не очень приятной. Как же хорошо иметь под рукой препарат, который может в короткие сроки избавить
+                        от любой проблемы, даже хронического характера.</p>
+                    <p>Первую и очень эффективную помощь Вам окажет Lavyl Auriсum. Нанесение этого препарата на кожу
+                        поможет остановить кровотечение, окажет сильное и быстрое обезболивающее и ранозаживляющее действие,
+                        снимет любые воспаление. Изготовленый из натурального сырья, из экологически чистых районах планеты,
+                        что и является гарантией его уникального действия.</p>
+                    <p>В любом случае этот препарат заменит в Вашей аптеке несколько различных средств, решит Ваши проблемы
+                        в сложных и неожиданных ситуациях, будет полезен Вам, Вашему ребенку и даже Вашим домашним питомцам.</p>
+                    <p>Вы обожглись или порезались, у вас воспалился укус насекомого? Первую и очень эффективную помощь вам
+                        окажет LavylAuriсum. Нанесение этого спрея на кожу поможет остановить кровотечение, окажет выраженное
+                        обезболивающее и ранозаживляющее действие, снимет воспаление.Да что же это за чудо препарат, спросите
+                        вы. Выполненный из натурального сырья, добытого в самых экологически чистых районах планеты,
+                        LAVYL AURICUM приготовлен с применением современных нанотехнологий, что и является гарантией его уникального действия.</p>
+                </div>
+                <h3 class="instruction">Инструкция применения</h3>
+                <p class="paragraph-instruction">Требуемое количество наносить равномерно на очищенную, сухую кожу, втереть и/или дать впитаться.
+                    В острых случаях используется в небольшом количестве, но часто. При хронических проблемах — не
+                    более пяти раз в день. Избегать попадания в глаза! Хранить в сухом, прохладном месте, желательно
+                    в темном. При использовании продукции важно помнить, что она очень экономична и применяется малыми
+                    дозами. Перед употреблением обязательно встряхивать все жидкие формы. Не допускать попадания в руки детей!</p>
+                <h3 class="consistency">Состав</h3>
+                <p class="paragraph-consistency">Aqua, Alcohol, Citrus Medica Vulgaris Peel Oil, Ribes Rubrum Fruit Extract, Tocopheryl Acetate,
+                    Lecithin, Retinyl Palmitate, Eucalyptus Globulus Leaf Oil, Citrus Aurantium Dulcis Oil, Melissa
+                    Officinalis Leaf Oil, Cananga Odorata Leaf Oil, Melaleuca Alternifolia Leaf Oil, Rosmarinus
+                    Officinalis Leaf Oil, Litsea Cubeba Fruit Oil.</p>
+            </div>
+            <div>
+                <span class="big-item-price">Цена: {{ products[1].price | currency:"UAH ₴ " }}</span>
+                <button class="order">Оформить Заказ</button>
+            </div>
+        </section>
     </section>
-    <section class="content-item">
+    <section class="second-item">
         <div class="item-caption">
-            <h2>
-                Lavyl <span class="subcaption">Auricum Sensitive</span>
-            </h2>
-            <small class="amount">
-                <span id="small-item-sens">50 мл.</span>
-                <span id="big-item-sens">150 мл.</span>
-            </small>
+            <h2>{{ products[2].name }}</h2>
+            <div class="amount">
+                <button class="second-small-item">{{ products[2].amount }}</button>
+                <button class="second-big-item">{{ products[3].amount }}</button>
+            </div>
         </div>
-        <article class="small-item-sens">
-            <img class="item-photo" src="images/item-3.png">
-            <p class="item-description">Auricum Sensitive имеет точно такой же состав, как Lavyl Auricum,
-                но без спиртовой составляющей. Предназначен для очень чувствительной кожи или для малышей.</p>
-            <div class="column">
-                <p class="item-price">Цена - 990.60 грн.</p>
-                <button class="confirm-order">Оформить заказ</button>
+        <section class="small-item">
+            <div class="images">
+                <img ng-src="{{ products[2].front }}" />
+                <img ng-src="{{ products[2].back }}" />
             </div>
-        </article>
-        <article class="big-item-sens">
-            <img class="item-photo" src="images/item-4.png">
-            <p class="item-description">Универсальное средство от множества проблем Вашего организма.
-                ВОССТАНАВЛИВАЮЩИЙ СПРЕЙ ДЛЯ ТЕЛА. «Скорая помощь» во всех экстренных ситуациях/ Безспиртовой.</p>
-            <div class="column">
-                <p class="item-price">Цена - 2 362.20 грн.</p>
-                <button class="confirm-order">Оформить заказ</button>
+            <div class="small-item-desc">
+                <h3 class="desc">Описание</h3>
+                <div class="paragraph-desc">
+                    <p>Lavyl Aurikum Sensetive — регенерирующий кожу, снимающий воспаления, восстанавливающий
+                        правильную работу клеток.</p>
+                    <p>Жизнь полна неожиданностей. И не всегда приятных. К сожалению, травмы ожоги, заболевания – это
+                        тоже часть нашей жизни. И как хорошо иметь под рукой препарат, который поможет нам почти в любой ситуации.</p>
+                    <p>Вы обожглись или порезались, у вас воспалился укус насекомого? Первую и очень эффективную помощь
+                        вам окажет Lavyl Auriсum. Нанесение этого продукта на нужное место поможет остановить
+                        кровотечение, окажет выраженное обезболивающее и ранозаживляющее действие, снимет воспаление.
+                        Да что же это за чудо препарат, спросите вы. Выполненный из натурального сырья, добытого в самых
+                        экологически чистых районах планеты, LAVYL AURICUM приготовлен с применением современных
+                        нанотехнологий, что и является гарантией его уникального действия.</p>
+                    <p>Препарат выпускается в двух вариантах: а именно LAVYL AURICUM на спиртовой основе и
+                        LAVYL AURICUM SENSITIVE без спиртовой составляющей. Первый вариант предпочтителен при решении
+                        острых проблем, а второй при лечении детей, при нанесении на лицо и слизистую, при
+                        продолжительном приеме. Купить Auricum sensetive можно в нашем магазине 0-24 + быстрая доставка.</p>
+                    <p>В любом случае этот препарат заменит в Вашей аптеке несколько различных средств, решит
+                        Ваши проблемы в сложных и неожиданных ситуациях, будет полезен Вам, Вашему ребенку и даже Вашим домашним питомцам.</p>
+                </div>
+                <h3 class="instruction">Инструкция применения</h3>
+                <p class="paragraph-instruction">Требуемое количество наносить равномерно на очищенную, сухую кожу,
+                    втереть и/или дать впитаться. В острых случаях используется в небольшом количестве, но часто.
+                    При хронических проблемах — не более пяти раз в день. Избегать попадания в глаза! Хранить в сухом,
+                    прохладном месте, желательно в темном. При использовании продукции важно помнить, что она очень
+                    экономична и применяется малыми дозами. Перед употреблением обязательно встряхивать все жидкие
+                    формы. Не допускать попадания в руки детей!</p>
+                <h3 class="consistency">Состав</h3>
+                <p class="paragraph-consistency">Aqua, Citrus Medica Vulgaris Peel Oil, Ribes Rubrum Fruit Extract,
+                    Tocopheryl Acetate, Lecithin, Retinyl Palmitate, Eucalyptus Globulus Leaf Oil, Citrus Aurantium
+                    Dulcis Oil, Melissa Officinalis Leaf Oil, Cananga Odorata Leaf Oil, Melaleuca Alternifolia Leaf Oil,
+                    Rosmarinus Officinalis Leaf Oil, Litsea Cubeba Fruit Oil.</p>
             </div>
-        </article>
+            <div>
+                <span class="small-item-price">Цена: {{ products[2].price | currency:" UAH ₴ " }}</span>
+                <button class="order">Оформить Заказ</button>
+            </div>
+        </section>
+        <section class="big-item">
+            <div class="images">
+                <img ng-src="{{ products[3].front }}" />
+                <img ng-src="{{ products[3].back }}" />
+            </div>
+            <div class="big-item-desc">
+                <h3 class="desc">Описание</h3>
+                <div class="paragraph-desc">
+                    <p>Lavyl Aurikum Sensetive — регенерирующий кожу, снимающий воспаления, восстанавливающий
+                        правильную работу клеток.</p>
+                    <p>Жизнь полна неожиданностей. И не всегда приятных. К сожалению, травмы ожоги, заболевания – это
+                        тоже часть нашей жизни. И как хорошо иметь под рукой препарат, который поможет нам почти в любой ситуации.</p>
+                    <p>Вы обожглись или порезались, у вас воспалился укус насекомого? Первую и очень эффективную помощь
+                        вам окажет Lavyl Auriсum. Нанесение этого продукта на нужное место поможет остановить
+                        кровотечение, окажет выраженное обезболивающее и ранозаживляющее действие, снимет воспаление.
+                        Да что же это за чудо препарат, спросите вы. Выполненный из натурального сырья, добытого в самых
+                        экологически чистых районах планеты, LAVYL AURICUM приготовлен с применением современных
+                        нанотехнологий, что и является гарантией его уникального действия.</p>
+                    <p>Препарат выпускается в двух вариантах: а именно LAVYL AURICUM на спиртовой основе и
+                        LAVYL AURICUM SENSITIVE без спиртовой составляющей. Первый вариант предпочтителен при решении
+                        острых проблем, а второй при лечении детей, при нанесении на лицо и слизистую, при
+                        продолжительном приеме. Купить Auricum sensetive можно в нашем магазине 0-24 + быстрая доставка.</p>
+                    <p>В любом случае этот препарат заменит в Вашей аптеке несколько различных средств, решит
+                        Ваши проблемы в сложных и неожиданных ситуациях, будет полезен Вам, Вашему ребенку и даже Вашим домашним питомцам.</p>
+                </div>
+                <h3 class="instruction">Инструкция применения</h3>
+                <p class="paragraph-instruction">Требуемое количество наносить равномерно на очищенную, сухую кожу,
+                    втереть и/или дать впитаться. В острых случаях используется в небольшом количестве, но часто.
+                    При хронических проблемах — не более пяти раз в день. Избегать попадания в глаза! Хранить в сухом,
+                    прохладном месте, желательно в темном. При использовании продукции важно помнить, что она очень
+                    экономична и применяется малыми дозами. Перед употреблением обязательно встряхивать все жидкие
+                    формы. Не допускать попадания в руки детей!</p>
+                <h3 class="consistency">Состав</h3>
+                <p class="paragraph-consistency">Aqua, Citrus Medica Vulgaris Peel Oil, Ribes Rubrum Fruit Extract,
+                    Tocopheryl Acetate, Lecithin, Retinyl Palmitate, Eucalyptus Globulus Leaf Oil, Citrus Aurantium
+                    Dulcis Oil, Melissa Officinalis Leaf Oil, Cananga Odorata Leaf Oil, Melaleuca Alternifolia Leaf Oil,
+                    Rosmarinus Officinalis Leaf Oil, Litsea Cubeba Fruit Oil.</p>
+            </div>
+            <div>
+                <span class="big-item-price">Цена: {{ products[3].price | currency:" UAH ₴ " }}</span>
+                <button class="order">Оформить Заказ</button>
+            </div>
+        </section>
     </section>
 </main>
-//= modules/footer.html
+<!--Modules-->
+<script src="scripts/js/app.js"></script>
+<!--Controllers-->
+<script src="scripts/js/mainController.js"></script>
+<!--Directives-->
+<script src="scripts/js/header.js"></script>
+<script src="scripts/js/order.js"></script>
+<script src="scripts/js/feedback.js"></script>
 </body>
 </html>

@@ -27,6 +27,17 @@ body {
         transform: translateX(0);
       }
     }
+
+    .feedback {
+      z-index: 10;
+      background: {
+        color: transparentize(black, 0.4);
+      }
+
+      form {
+        transform: translateX(0);
+      }
+    }
   }
 
   .make-order,
@@ -36,13 +47,6 @@ body {
   main {
     transition: {
       duration: $time;
-      timing-function: linear;
-    }
-  }
-
-  .submit {
-    transition: {
-      duration: $time / 2;
       timing-function: linear;
     }
   }
@@ -274,6 +278,10 @@ body {
             weight: bold;
             size: $line * 1.4;
           }
+          transition: {
+            duration: $time / 2;
+            timing-function: linear;
+          }
           cursor: pointer;
 
           &:hover {
@@ -305,57 +313,78 @@ body {
     }
   }
 
-  .feedback-form {
+  .feedback {
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 100%;
     left: 0;
     top: 0;
-    width: 30%;
+    width: 100%;
     height: 100%;
-    background: fixed linear-gradient(to bottom, #2683ff 0%, $blue 70%, white 90%, $blue 100%) no-repeat;
-    z-index: 10;
-    overflow: {
-      x: hidden;
-      y: hidden;
+    background: {
+      color: transparentize(black, 1);
     }
-    //transform: translateX(100%);
-
-    &.active {
-      transform: translateX(0);
-    }
-
-    .fd-close-btn {
-      position: relative;
-      border: none;
-      outline: none;
-      align-self: flex-end;
-      width: $line * 5;
-      height: $line * 5;
-      background: {
-        color: transparent;
-      }
-      cursor: pointer;
-
-      &::before,
-      &::after {
-        position: absolute;
-        top: $line * 2.5;
-        left: 0;
-        display: block;
-        content: '';
-        width: 100%;
-        height: $line / 2;
-        background: {
-          color: white;
-        }
-      }
-    }
+    z-index: -10;
 
     form {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      justify-content: space-around;
+      align-content: center;
+      flex-wrap: wrap;
+      background: {
+        color: white;
+      }
+      overflow: {
+        x: hidden;
+        y: hidden;
+      }
+      transition: {
+        duration: $time;
+        timing-function: linear;
+      }
+      transform: translateX(-100%);
 
+      * {
+        margin: 0 0 $line * 1.5 0;
+      }
+
+      input {
+        @include orderLabel(90%, $line * 3);
+      }
+
+      .message {
+        width: 90%;
+        height: 15%;
+        padding: $line 0 0 $line;
+        resize: none;
+        color: $blue;
+        font: {
+          family: Arial, sans-serif;
+          size: $line * 1.6;
+        }
+        border: {
+          width: 3px;
+          style: solid;
+          color: $blue;
+        }
+
+        &::placeholder {
+          color: $blue;
+        }
+      }
+
+      #fd-reset {
+        @include button(48%, lighten(red, 0.4), white);
+        padding: $line 0;
+      }
+
+      #fd-submit {
+        @include button(48%, $green, white);
+        padding: $line 0;
+      }
     }
   }
 
@@ -534,7 +563,7 @@ body {
         }
 
         .order {
-          @include button(white, $black);
+          @include button($line * 18, white, $black);
         }
       }
 
@@ -695,7 +724,7 @@ body {
         }
 
         .order {
-          @include button(white, $black);
+          @include button($black, white);
         }
       }
 

@@ -7,14 +7,14 @@ $darkBlue: #578dff;
 $black: #505050;
 $green: #30b930;
 
-@mixin button($color: $blue, $textColor: white) {
+@mixin button($width: $line * 17,$color: $blue, $textColor: white) {
   border: none;
   outline: none;
   background: {
     color: $color;
   }
   color: $textColor;
-  width: $line * 17;
+  width: $width;
   padding: $line * 1.5 0;
   font: {
     size: $line * 1.4;
@@ -40,9 +40,9 @@ $green: #30b930;
   }
 }
 
-@mixin orderLabel() {
-  height: $line * 4;
-  width: 90%;
+@mixin orderLabel($width: 90%, $height: $line * 4) {
+  height: $height;
+  width: $width;
   background: {
     color: darken($blue, 5);
   }
@@ -51,24 +51,24 @@ $green: #30b930;
     align: center;
   }
   border: {
-    width: 5px;
+    width: 3px;
     style: solid;
     color: darken($blue, 5);
   }
   outline: none;
   font: {
     family: Arial, sans-serif;
-    size: $line * 1.5;
-    weight: bold;
+    size: $line * 1.8;
   }
   transition: {
     duration: $time / 2;
     timing-function: linear;
   }
+  cursor: pointer;
 
   &:focus {
-    box-shadow: $line $line 0 0 transparentize($darkBlue, 0.4);
-    transform: translateY($line * -1) translateX($line * -1);
+    box-shadow: 6px 6px 0 0 transparentize($darkBlue, 0.4);
+    transform: translateY(-3px) translateX(-3px);
     background: {
       color: white;
     }

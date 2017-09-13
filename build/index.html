@@ -12,8 +12,6 @@
     <script src="scripts/js/app.js"></script>
     <!--Controllers-->
     <script src="scripts/js/controllers/mainController.js"></script>
-    <!--Directives-->
-    <script src="scripts/js/directives/feedBack.js"></script>
 </head>
 <body ng-controller="MainController">
 <div class="make-order">
@@ -55,6 +53,15 @@
 </div>
 <div class="full-screen-image">
     <img src="" />
+</div>
+<div class="feedback">
+    <form method="post">
+        <input type="email" id="fd-email" name="fd-email" placeholder="Введите свой e-mail" required />
+        <input type="tel" id="fd-tel" name="fd-tel" placeholder="Введите свой номер телефона" required />
+        <textarea class="message" name="message" placeholder="Введите свое сообщение" required></textarea>
+        <button type="reset" id="fd-reset">Сбросить</button>
+        <button type="submit" id="fd-submit">Отправить</button>
+    </form>
 </div>
 <header>
     <button id="feedback">Обратный Звонок</button>

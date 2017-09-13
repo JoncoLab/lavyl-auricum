@@ -7,7 +7,6 @@ var gulp = require("gulp"),
     compileSass = require("gulp-sass"),
     rigger = require("gulp-rigger"),
     rimraf = require("rimraf"),
-    jsMinify = require("gulp-minify"),
     zip = require("gulp-zip"),
     ftp = require("vinyl-ftp"),
     path = {
@@ -23,8 +22,8 @@ var gulp = require("gulp"),
             font: 'src/fonts/*.ttf',
             js: [
                 'src/scripts/js/*.js',
-                'src/scripts/js/controllers/*.js',
-                'src/scripts/js/directives/*.js'
+                'src/scripts/js/**/*.js',
+                'src/scripts/js/**/*.html'
             ],
             zip: [
                 'build/*',
@@ -47,16 +46,14 @@ var gulp = require("gulp"),
         watch: {
             pages: [
                 'src/*.html',
-                'src/modules/*.html',
-                'src/modules/*.php',
                 'src/*.php',
                 'src/fonts/*.ttf'
             ],
             scripts: [
                 'src/scripts/php/*.php',
                 'src/scripts/js/*.js',
-                'src/scripts/js/controllers/*.js',
-                'src/scripts/js/directives/*.js'
+                'src/scripts/js/**/*.js',
+                'src/scripts/js/**/*.html'
             ],
             styles: [
                 'src/styles/*.scss',
@@ -107,12 +104,12 @@ gulp.task('php:build', function () {
 gulp.task('js:build', function () {
     gulp.src(path.src.js)
         .pipe(connectToFtp.newer(path.ftp.js))
-        .pipe(jsMinify({
-            ext: {
-                min: '.js'
-            },
-            noSource: '*.js'
-        }))
+        // .pipe(jsMinify({
+        //     ext: {
+        //         min: '.js'
+        //     },
+        //     noSource: '*.js'
+        // }))
         .pipe(connectToFtp.dest(path.ftp.js))
         .pipe(gulp.dest(path.build.js));
 });

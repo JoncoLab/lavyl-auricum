@@ -5,11 +5,7 @@ $lightBlue: #aad5ff;
 $blue: #7a90ff;
 $darkBlue: #578dff;
 $black: #505050;
-
-@font-face {
-  src: url('../../fonts/ico.ttf');
-  font-family: Ico, sans-serif;
-}
+$green: #30b930;
 
 @mixin button($color: $blue, $textColor: white) {
   border: none;
@@ -44,40 +40,62 @@ $black: #505050;
   }
 }
 
-@mixin orderLabel($row: 1, $column: 1) {
-  grid-row: $row;
-  grid-column: $column;
-  height: $line * 3.5;
-  width: 95%;
+@mixin orderLabel() {
+  height: $line * 4;
+  width: 90%;
   background: {
-    color: white;
+    color: darken($blue, 5);
   }
-  color: #1454ff;
+  color: white;
   text: {
     align: center;
   }
   border: {
-    width: $line / 5;
+    width: 5px;
     style: solid;
-    color: #1454ff;
+    color: darken($blue, 5);
   }
+  outline: none;
   font: {
     family: Arial, sans-serif;
-    size: $line * 1.6;
+    size: $line * 1.5;
+    weight: bold;
+  }
+  transition: {
+    duration: $time / 2;
+    timing-function: linear;
+  }
+
+  &:focus {
+    box-shadow: $line $line 0 0 transparentize($darkBlue, 0.4);
+    transform: translateY($line * -1) translateX($line * -1);
+    background: {
+      color: white;
+    }
+    padding: 0 0 0 $line;
+    color: darken($blue, 5);
+    text: {
+      align: left;
+    }
+    font: {
+      size: $line * 1.8;
+    }
+  }
+
+  &::placeholder {
+    color: white;
   }
 }
 
-@mixin orderInput($percent: 20%, $fontSize: $line * 2.5) {
+@mixin orderInput($fontSize: $line * 2) {
   border: none;
   outline: none;
-  width: $percent;
-  height: 100%;
-  color: #1454ff;
+  color: white;
   background: {
-    color: white;
+    color: darken($blue, 5);
   }
   text: {
-    align: left;
+    align: center;
   }
   font: {
     family: Arial, sans-serif;

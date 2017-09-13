@@ -1,189 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="LavylAuricumApp">
-<head>
-    <meta charset="UTF-8">
-    <title>Lavyl Auricum</title>
-    <link href="styles/style.css" rel="stylesheet">
-    <script src="scripts/js/angular.min.js"></script>
-    <script src="scripts/js/jquery-3.2.1.min.js"></script>
-    <!--jQuery-->
-    <script src="scripts/js/script.js"></script>
-    <!--Modules-->
-    <script src="scripts/js/app.js"></script>
-    <!--Controllers-->
-    <script src="scripts/js/controllers/mainController.js"></script>
-    <!--Directives-->
-    <script src="scripts/js/directives/feedBack.js"></script>
-</head>
-<body ng-controller="MainController">
-<div class="make-order">
-    <div class="order-bg"></div>
-    <section class="order-content">
-        <button class="close-btn"></button>
-        <div class="products">
-            <div ng-repeat="product in products">
-                <div class="flex-position">
-                    <img ng-src="{{ product.front }}" />
-                    <div class="centner">
-                        <h4 class="item-name">{{ product.name }} <span>{{ product.amount }}</span></h4>
-                        <div class="calc">
-                            <span class="subtract" ng-click="subtract($index)">-</span>
-                            <span class="number">{{ product.amountNumber }}</span>
-                            <span class="add" ng-click="add($index)">+</span>
-                        </div>
-                    </div>
-                </div>
-                <span class="price">Цена: {{ product.price * product.amountNumber | currency:"₴ " }}</span>
-            </div>
-        </div>
-        <form method="post" action="">
-            <label for="total-amount" class="total-amount">
-                Кол-во товаров: <input id="total-amount" value="{{ getTotalAmount() }}" readonly />
-            </label>
-            <label class="total-price" for="total-price">
-                Cтоимость:
-                <input name="total-price" id="total-price"
-                       value="{{ getTotalSum() | currency:'₴ ' }}" readonly />
-            </label>
-            <input name="city" id="city" placeholder="Укажите ваш город" required />
-            <input name="address" id="address" placeholder="Адрес и номер отделения" required />
-            <input type="tel" name="phone-number" id="phone-number" placeholder="Введите номер телефона" required />
-            <input type="email" name="email" id="email" placeholder="Введите свой e-mail" required />
-            <button class="submit" type="submit">Оформить Заказ</button>
-        </form>
-    </section>
-</div>
-<div class="full-screen-image">
-    <img src="" />
-</div>
-<header>
-    <button id="feedback">Обратный Звонок</button>
-    <h1 class="caption">Lavyl <span>Auricum</span></h1>
-    <button id="order">Оформить Заказ</button>
-</header>
-<main>
-    <section class="first-item">
-        <div class="item-caption">
-            <h2>{{ products[0].name }}</h2>
-            <div class="amount">
-                <button class="first-small-item">{{ products[0].amount }}</button>
-                <button class="first-big-item">{{ products[1].amount }}</button>
-            </div>
-        </div>
-        <div class="small-item-images">
-                <img ng-src="{{ products[0].front }}" />
-                <img ng-src="{{ products[0].back }}" />
-            </div>
-        <div class="small-item-add">
-            <h4>Артикуль: A-050-02</h4>
-            <h4>CPNP номер: 1461148</h4>
-            <span class="small-item-price">Цена: {{ products[0].price | currency:" ₴ " }}</span>
-            <button class="order">Оформить Заказ</button>
-        </div>
-        <div class="first-item-desc">
-            <h3 class="desc">Описание</h3>
-            <div class="paragraph-desc">
-                <p>LavylAurikum — много функциональный препарат, широкого спектра действия.</p>
-                <p>Жизнь полна неожиданностей — травмы, ожоги, заболевания – это тоже часть нашей жизни и как правило
-                    не очень приятной. Как же хорошо иметь под рукой препарат, который может в короткие сроки избавить
-                    от любой проблемы, даже хронического характера.</p>
-                <p>Первую и очень эффективную помощь Вам окажет Lavyl Auriсum. Нанесение этого препарата на кожу
-                    поможет остановить кровотечение, окажет сильное и быстрое обезболивающее и ранозаживляющее действие,
-                    снимет любые воспаление. Изготовленый из натурального сырья, из экологически чистых районах планеты,
-                    что и является гарантией его уникального действия.</p>
-                <p>В любом случае этот препарат заменит в Вашей аптеке несколько различных средств, решит Ваши проблемы
-                    в сложных и неожиданных ситуациях, будет полезен Вам, Вашему ребенку и даже Вашим домашним питомцам.</p>
-                <p>Вы обожглись или порезались, у вас воспалился укус насекомого? Первую и очень эффективную помощь вам
-                    окажет LavylAuriсum. Нанесение этого спрея на кожу поможет остановить кровотечение, окажет выраженное
-                    обезболивающее и ранозаживляющее действие, снимет воспаление.Да что же это за чудо препарат, спросите
-                    вы. Выполненный из натурального сырья, добытого в самых экологически чистых районах планеты,
-                    LAVYL AURICUM приготовлен с применением современных нанотехнологий, что и является гарантией его уникального действия.</p>
-            </div>
-            <h3 class="instruction">Инструкция применения</h3>
-            <p class="paragraph-instruction">Требуемое количество наносить равномерно на очищенную, сухую кожу, втереть и/или дать впитаться.
-                В острых случаях используется в небольшом количестве, но часто. При хронических проблемах — не
-                более пяти раз в день. Избегать попадания в глаза! Хранить в сухом, прохладном месте, желательно
-                в темном. При использовании продукции важно помнить, что она очень экономична и применяется малыми
-                дозами. Перед употреблением обязательно встряхивать все жидкие формы. Не допускать попадания в руки детей!</p>
-            <h3 class="consistency">Состав</h3>
-            <p class="paragraph-consistency">Aqua, Alcohol, Citrus Medica Vulgaris Peel Oil, Ribes Rubrum Fruit Extract, Tocopheryl Acetate,
-                Lecithin, Retinyl Palmitate, Eucalyptus Globulus Leaf Oil, Citrus Aurantium Dulcis Oil, Melissa
-                Officinalis Leaf Oil, Cananga Odorata Leaf Oil, Melaleuca Alternifolia Leaf Oil, Rosmarinus
-                Officinalis Leaf Oil, Litsea Cubeba Fruit Oil.</p>
-        </div>
-        <div class="big-item-images">
-                <img ng-src="{{ products[1].front }}" />
-                <img ng-src="{{ products[1].back }}" />
-            </div>
-        <div class="big-item-add">
-            <h4>Артикуль: LA-150-02</h4>
-            <h4>CPNP номер: 1461148</h4>
-            <span class="big-item-price">Цена: {{ products[1].price | currency:"₴ " }}</span>
-            <button class="order">Оформить Заказ</button>
-        </div>
-    </section>
-    <section class="second-item">
-        <div class="item-caption">
-            <h2>{{ products[2].name }}</h2>
-            <div class="amount">
-                <button class="second-small-item">{{ products[2].amount }}</button>
-                <button class="second-big-item">{{ products[3].amount }}</button>
-            </div>
-        </div>
-        <div class="small-item-images">
-            <img ng-src="{{ products[2].front }}" />
-            <img ng-src="{{ products[2].back }}" />
-        </div>
-        <div class="small-item-add">
-            <h4>Артикуль: LAS-050-02</h4>
-            <h4>CPNP номер: 1461117</h4>
-            <span class="small-item-price">Цена: {{ products[2].price | currency:" ₴ " }}</span>
-            <button class="order">Оформить Заказ</button>
-        </div>
-        <div class="second-item-desc">
-            <h3 class="desc">Описание</h3>
-            <div class="paragraph-desc">
-                <p>Lavyl Aurikum Sensetive — регенерирующий кожу, снимающий воспаления, восстанавливающий
-                    правильную работу клеток.</p>
-                <p>Жизнь полна неожиданностей. И не всегда приятных. К сожалению, травмы ожоги, заболевания – это
-                    тоже часть нашей жизни. И как хорошо иметь под рукой препарат, который поможет нам почти в любой ситуации.</p>
-                <p>Вы обожглись или порезались, у вас воспалился укус насекомого? Первую и очень эффективную помощь
-                    вам окажет Lavyl Auriсum. Нанесение этого продукта на нужное место поможет остановить
-                    кровотечение, окажет выраженное обезболивающее и ранозаживляющее действие, снимет воспаление.
-                    Да что же это за чудо препарат, спросите вы. Выполненный из натурального сырья, добытого в самых
-                    экологически чистых районах планеты, LAVYL AURICUM приготовлен с применением современных
-                    нанотехнологий, что и является гарантией его уникального действия.</p>
-                <p>Препарат выпускается в двух вариантах: а именно LAVYL AURICUM на спиртовой основе и
-                    LAVYL AURICUM SENSITIVE без спиртовой составляющей. Первый вариант предпочтителен при решении
-                    острых проблем, а второй при лечении детей, при нанесении на лицо и слизистую, при
-                    продолжительном приеме. Купить Auricum sensetive можно в нашем магазине 0-24 + быстрая доставка.</p>
-                <p>В любом случае этот препарат заменит в Вашей аптеке несколько различных средств, решит
-                    Ваши проблемы в сложных и неожиданных ситуациях, будет полезен Вам, Вашему ребенку и даже Вашим домашним питомцам.</p>
-            </div>
-            <h3 class="instruction">Инструкция применения</h3>
-            <p class="paragraph-instruction">Требуемое количество наносить равномерно на очищенную, сухую кожу,
-                втереть и/или дать впитаться. В острых случаях используется в небольшом количестве, но часто.
-                При хронических проблемах — не более пяти раз в день. Избегать попадания в глаза! Хранить в сухом,
-                прохладном месте, желательно в темном. При использовании продукции важно помнить, что она очень
-                экономична и применяется малыми дозами. Перед употреблением обязательно встряхивать все жидкие
-                формы. Не допускать попадания в руки детей!</p>
-            <h3 class="consistency">Состав</h3>
-            <p class="paragraph-consistency">Aqua, Citrus Medica Vulgaris Peel Oil, Ribes Rubrum Fruit Extract,
-                Tocopheryl Acetate, Lecithin, Retinyl Palmitate, Eucalyptus Globulus Leaf Oil, Citrus Aurantium
-                Dulcis Oil, Melissa Officinalis Leaf Oil, Cananga Odorata Leaf Oil, Melaleuca Alternifolia Leaf Oil,
-                Rosmarinus Officinalis Leaf Oil, Litsea Cubeba Fruit Oil.</p>
-        </div>
-        <div class="big-item-images">
-            <img ng-src="{{ products[3].front }}" />
-            <img ng-src="{{ products[3].back }}" />
-        </div>
-        <div class="big-item-add">
-            <h4>Артикуль: LAS-150-02</h4>
-            <h4>CPNP номер: 1461117</h4>
-            <span class="small-item-price">Цена: {{ products[3].price | currency:" ₴ " }}</span>
-            <button class="order">Оформить Заказ</button>
-        </div>
-    </section>
-</main>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.3.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/4.3.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/4.3.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/4.3.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/4.3.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>

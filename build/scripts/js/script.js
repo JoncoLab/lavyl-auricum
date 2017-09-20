@@ -7,32 +7,35 @@ const main = function () {
         firstBigAmountBtn = $('.first-big-item'),
         secondSmallAmountItem = $('.second-small-item'),
         secondBigAmountItem = $('.second-big-item'),
-        firstSmIt = $('.first-item').children('.small-item-images, .small-item-add'),
-        firstBgIt = $('.first-item').children('.big-item-images, .big-item-add'),
-        secondSmIt = $('.second-item').children('.small-item-images, .small-item-add'),
-        secondBgIt = $('.second-item').children('.big-item-images, .big-item-add'),
+        firstSmIt = $('.first-item .small-item-images, .small-item-add'),
+        firstBgIt = $('.first-item .big-item-images, .big-item-add'),
+        secondSmIt = $('.second-item .small-item-images, .small-item-add'),
+        secondBgIt = $('.second-item .big-item-images, .big-item-add'),
         orderBtn = $('#order, .order'),
+        orderBox = $('.make-order'),
         orderCloseBtn = $('.close-btn'),
+        feedBackBtn = $('#feedback'),
+        feedBackBox = $('.feedback'),
         body = $('body'),
         firstDescParagraph = [
-            $('.first-item-desc').children('.paragraph-desc'),
-            $('.first-item-desc').children('.paragraph-instruction'),
-            $('.first-item-desc').children('.paragraph-consistency')
+            $('.first-item-desc .paragraph-desc'),
+            $('.first-item-desc .paragraph-instruction'),
+            $('.first-item-desc .paragraph-consistency')
         ],
         firstDescCaption = [
-            $('.first-item-desc').children('.desc'),
-            $('.first-item-desc').children('.instruction'),
-            $('.first-item-desc').children('.consistency')
+            $('.first-item-desc .desc'),
+            $('.first-item-desc .instruction'),
+            $('.first-item-desc .consistency')
         ],
         secondDescParagraph = [
-            $('.second-item-desc').children('.paragraph-desc'),
-            $('.second-item-desc').children('.paragraph-instruction'),
-            $('.second-item-desc').children('.paragraph-consistency')
+            $('.second-item-desc .paragraph-desc'),
+            $('.second-item-desc .paragraph-instruction'),
+            $('.second-item-desc .paragraph-consistency')
         ],
         secondDescCaption = [
-            $('.second-item-desc').children('.desc'),
-            $('.second-item-desc').children('.instruction'),
-            $('.second-item-desc').children('.consistency')
+            $('.second-item-desc .desc'),
+            $('.second-item-desc .instruction'),
+            $('.second-item-desc .consistency')
         ],
         images = [
             $('.first-item .small-item-images img:first-of-type'),
@@ -45,14 +48,20 @@ const main = function () {
             $('.second-item .big-item-images img:last-of-type')
         ];
 
-    var fullScreenImg = $('.full-screen-image img').attr('src');
-
     orderBtn.click(function () {
-        body.addClass('active');
+        body.addClass('order-active');
     });
 
-    orderCloseBtn.click(function() {
-       body.removeClass('active');
+    orderBox.click(function() {
+       body.removeClass('order-active');
+    });
+
+    feedBackBtn.click(function () {
+        body.addClass('feedback-active');
+    });
+
+    feedBackBox.click(function () {
+        body.removeClass('feedback-active');
     });
 
     firstBgIt.hide();

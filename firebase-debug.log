@@ -1,0 +1,36 @@
+[debug] [2017-09-13T23:40:49.928Z] ----------------------------------------------------------------------
+[debug] [2017-09-13T23:40:49.931Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Sher\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-09-13T23:40:49.931Z] CLI Version:   3.10.1
+[debug] [2017-09-13T23:40:49.931Z] Platform:      win32
+[debug] [2017-09-13T23:40:49.931Z] Node Version:  v8.1.2
+[debug] [2017-09-13T23:40:49.932Z] Time:          Thu Sep 14 2017 02:40:49 GMT+0300 (Финляндия (лето))
+[debug] [2017-09-13T23:40:49.932Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-09-13T23:40:49.959Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-09-13T23:40:49.960Z] > authorizing via signed-in user
+[debug] [2017-09-13T23:40:49.963Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-09-13T23:40:49.963Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/eRnAhZF-hOEdmmAO69B8g_ZBDZTv5hRvMmFjOJwwibWpqRfF90o1YbO4ByKUzaLj',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Sep 14 2017 02:40:49 GMT+0300 (Финляндия (лето))
+[debug] [2017-09-13T23:40:51.373Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T23:40:51.388Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/lavyl-auricum  
+ Thu Sep 14 2017 02:40:51 GMT+0300 (Финляндия (лето))
+[debug] [2017-09-13T23:40:55.321Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T23:40:55.321Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/lavyl-auricum/tokens  
+ Thu Sep 14 2017 02:40:55 GMT+0300 (Финляндия (лето))
+[debug] [2017-09-13T23:40:58.700Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\Sher\Documents\Work\lavyl-auricum'...
+[info] 
+[debug] [2017-09-13T23:40:58.702Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/lavyl-auricum  
+ Thu Sep 14 2017 02:40:58 GMT+0300 (Финляндия (лето))
+[debug] [2017-09-13T23:41:00.930Z] <<< HTTP RESPONSE 200
+[debug] [2017-09-13T23:41:00.930Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/933825177011/clients/_:getWebAppConfig  
+ Thu Sep 14 2017 02:41:00 GMT+0300 (Финляндия (лето))
+[debug] [2017-09-13T23:41:02.429Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+

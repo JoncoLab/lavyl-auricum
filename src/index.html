@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Lavyl Auricum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no">
     <link href="styles/style.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBuovBPpFFrGRTjsRrJU3DGT822RS020rY",
+            authDomain: "lavyl-auricum.firebaseapp.com",
+            databaseURL: "https://lavyl-auricum.firebaseio.com",
+            projectId: "lavyl-auricum",
+            storageBucket: "lavyl-auricum.appspot.com",
+            messagingSenderId: "933825177011"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script src="scripts/js/angular.min.js"></script>
     <script src="scripts/js/jquery-3.2.1.min.js"></script>
     <!--jQuery-->
@@ -17,7 +31,6 @@
 <div class="make-order">
     <div class="order-bg"></div>
     <section class="order-content">
-        <button class="close-btn"></button>
         <div class="products">
             <div ng-repeat="product in products">
                 <div class="flex-position">

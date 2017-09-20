@@ -9,9 +9,12 @@ body {
 }
 
 body {
-  background: fixed linear-gradient(to right bottom, $lightBlue 0%,$blue 20%,$darkBlue 100%) top no-repeat;
+  display: grid;
+  grid-template-rows: 200%;
+  background: fixed linear-gradient(to right bottom, $lightBlue 0%, $blue 45%, $blue 75%, $darkBlue 100%) no-repeat;
 
-  &.active {
+  &.order-active {
+
     header,
     main {
       transform: translateX(-40%);
@@ -26,6 +29,14 @@ body {
       .order-content {
         transform: translateX(0);
       }
+    }
+  }
+
+  &.feedback-active {
+
+    header,
+    main {
+      transform: translateX(20%);
     }
 
     .feedback {
@@ -72,51 +83,13 @@ body {
       grid-template-columns: 60% 40%;
       grid-template-rows: 8% 1fr;
       background: {
-        color: white;
+        color: $white;
       }
       overflow: {
         x: hidden;
         y: hidden;
       }
       transform: translateX(100%);
-
-      .close-btn {
-        align-self: center;
-        margin: 0 0 0 $line;
-        position: relative;
-        border: none;
-        outline: none;
-        grid-row: 1;
-        grid-column: 1;
-        width: $line * 5;
-        height: $line * 5;
-        background: {
-          color: transparent;
-        }
-        cursor: pointer;
-
-        &::before,
-        &::after {
-          position: absolute;
-          top: $line * 2.5;
-          left: 0;
-          display: block;
-          content: '';
-          width: 100%;
-          height: $line / 2;
-          background: {
-            color: $blue;
-          }
-        }
-
-        &::before {
-          transform: rotate(45deg);
-        }
-
-        &::after {
-          transform: rotate(-45deg);
-        }
-      }
 
       .products {
         grid-row: 2;
@@ -188,7 +161,7 @@ body {
                   align-self: center;
                   width: $line * 4;
                   height: 15%;
-                  color: white;
+                  color: $white;
                   font: {
                     family: Arial, sans-serif;
                     weight: bold;
@@ -268,7 +241,7 @@ body {
           background: {
             color: $green;
           }
-          color: white;
+          color: $white;
           text: {
             align: center;
             transform: uppercase;
@@ -335,7 +308,7 @@ body {
       align-content: center;
       flex-wrap: wrap;
       background: {
-        color: white;
+        color: $white;
       }
       overflow: {
         x: hidden;
@@ -377,12 +350,12 @@ body {
       }
 
       #fd-reset {
-        @include button(48%, lighten(red, 0.4), white);
+        @include button(48%, lighten(red, 0.4), $white);
         padding: $line 0;
       }
 
       #fd-submit {
-        @include button(48%, $green, white);
+        @include button(48%, $green, $white);
         padding: $line 0;
       }
     }
@@ -397,7 +370,7 @@ body {
     align-items: center;
     justify-content: space-around;
     background: {
-      color: white;
+      color: $white;
     }
     box-shadow: 0 $line / 5 $line * 5 0 black;
 
@@ -439,60 +412,56 @@ body {
   }
 
   main {
-    padding: $line * 7 0 0 0;
+    padding: $line * 8 0 0 0;
+    grid-row: 1;
     display: grid;
-    grid-template-rows: 100% 100%;
+    grid-template-rows: 50% 50%;
     grid-template-columns: 100%;
     width: 100%;
 
-    .item-caption {
-      display: grid;
-      grid-template-columns: 30% 40% 30%;
-    }
-
-    .first-item {
-      grid-row: 1;
+    .first-item,
+    .second-item {
       grid-column: 1;
       display: grid;
-      align-content: start;
-      grid-template-rows: 10% 100%;
-      grid-template-columns: 17% 1fr 15%;
+      grid-template-rows: 10% 95%;
+      grid-template-columns: 17% 68% 15%;
 
       .item-caption {
-        display: grid;
-        grid-template-columns: 30% 40% 30%;
         grid-row: 1;
         grid-column: span 3;
+        display: flex;
+        justify-content: center;
         align-items: center;
 
         h2 {
-          justify-self: center;
-          grid-column: 1;
-          padding: 0 $line * 4;
+          min-width: 40%;
           font: {
             size: $line * 3.5;
             family: Arial, sans-serif;
             weight: bold;
           }
           text: {
+            align: left;
             transform: uppercase;
           }
-          color: white;
+          color: $white;
         }
 
         .amount {
-          padding: 0 $line * 5;
-          grid-column: 3;
+          min-width: 20%;
           display: flex;
           justify-content: space-evenly;
+          align-items: center;
 
           .first-small-item,
-          .first-big-item {
+          .first-big-item,
+          .second-small-item,
+          .second-big-item {
             border: none;
             outline: none;
             padding: $line $line * 2;
             background: {
-              color: white;
+              color: $white;
             }
             color: $black;
             font: {
@@ -504,27 +473,33 @@ body {
               align: center;
               transform: uppercase;
             }
-            cursor: pointer;transition: {
-            duration: $time;
-            timing-function: linear;
-          }
+            cursor: pointer;
+            transition: {
+              duration: $time / 2;
+              timing-function: linear;
+            }
 
 
             &.current {
-              color: white;
+              color: $white;
               background: {
-                color: $black;
+                color: $darkBlue;
               }
-              box-shadow: $line / 2 $line / 2 0 0 transparentize($black, 0.4);
+              box-shadow: $line / 2 $line / 2 0 0 transparentize($darkBlue, 0.4);
             }
 
             &:hover:not(.current) {
-              box-shadow: $line / 2 $line / 2 0 0 transparentize(white, 0.4);
+              box-shadow: $line / 2 $line / 2 0 0 transparentize($white, 0.4);
               transform: translateY($line / -2) translateX($line / -2);
             }
           }
         }
       }
+    }
+
+
+    .first-item {
+      grid-row: 1;
 
       .small-item-images,
       .big-item-images {
@@ -532,8 +507,12 @@ body {
         grid-column: 1;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: {
+          x: hidden;
+          y: hidden;
+        }
 
         img {
           width: 100%;
@@ -542,19 +521,21 @@ body {
 
       .small-item-add,
       .big-item-add {
+        align-self: center;
         grid-row: 2;
         grid-column: 3;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: space-around;
+        align-items: center;
 
         h4,
         .small-item-price,
         .big-item-price {
           padding: 0;
           margin: $line * 2 0;
-          color: white;
+          color: $white;
           font: {
             family: Arial, sans-serif;
             weight: normal;
@@ -563,7 +544,7 @@ body {
         }
 
         .order {
-          @include button($line * 18, white, $black);
+          @include button($line * 18, $white, $black);
         }
       }
 
@@ -580,7 +561,7 @@ body {
             size: $line * 2.6;
             weight: bold;
           }
-          color: white;
+          color: $white;
           cursor: pointer;
           transition: {
             duration: $time / 2;
@@ -589,7 +570,7 @@ body {
 
           &:hover {
             background: {
-              color: white;
+              color: $white;
             }
             color: $blue;
           }
@@ -601,7 +582,7 @@ body {
             family: Arial, sans-serif;
             size: $line * 1.8;
           }
-          color: white;
+          color: $white;
         }
 
         .paragraph-instruction,
@@ -613,79 +594,6 @@ body {
 
     .second-item {
       grid-row: 2;
-      grid-column: 1;
-      display: grid;
-      align-content: end;
-      grid-template-rows: min-content 100%;
-      grid-template-columns: 17% 1fr 15%;
-
-      .item-caption {
-        display: grid;
-        grid-template-columns: 30% 40% 30%;
-        grid-row: 1;
-        grid-column: span 3;
-        align-items: center;
-
-        h2 {
-          justify-self: center;
-          grid-column: 1;
-          padding: 0 $line * 4;
-          font: {
-            size: $line * 3.5;
-            family: Arial, sans-serif;
-            weight: bold;
-          }
-          text: {
-            transform: uppercase;
-          }
-          color: white;
-        }
-
-        .amount {
-          padding: 0 $line * 5;
-          grid-column: 3;
-          display: flex;
-          justify-content: space-evenly;
-
-          .second-small-item,
-          .second-big-item {
-            border: none;
-            outline: none;
-            padding: $line $line * 2;
-            background: {
-              color: white;
-            }
-            color: $black;
-            font: {
-              size: $line * 1.8;
-              weight: bold;
-              family: Arial, sans-serif;
-            }
-            text: {
-              align: center;
-              transform: uppercase;
-            }
-            cursor: pointer;transition: {
-            duration: $time;
-            timing-function: linear;
-          }
-
-
-            &.current {
-              color: white;
-              background: {
-                color: $black;
-              }
-              box-shadow: $line / 2 $line / 2 0 0 transparentize($black, 0.4);
-            }
-
-            &:hover:not(.current) {
-              box-shadow: $line / 2 $line / 2 0 0 transparentize(white, 0.4);
-              transform: translateY($line / -2) translateX($line / -2);
-            }
-          }
-        }
-      }
 
       .small-item-images,
       .big-item-images {
@@ -693,8 +601,8 @@ body {
         grid-column: 1;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: flex-start;
 
         img {
           width: 100%;
@@ -715,7 +623,7 @@ body {
         .big-item-price {
           padding: 0;
           margin: $line * 2 0;
-          color: white;
+          color: $white;
           font: {
             family: Arial, sans-serif;
             weight: normal;
@@ -724,7 +632,7 @@ body {
         }
 
         .order {
-          @include button($black, white);
+          @include button($line * 18, $white, $black);
         }
       }
 
@@ -741,7 +649,7 @@ body {
             size: $line * 2.6;
             weight: bold;
           }
-          color: white;
+          color: $white;
           cursor: pointer;
           transition: {
             duration: $time / 2;
@@ -750,7 +658,7 @@ body {
 
           &:hover {
             background: {
-              color: white;
+              color: $white;
             }
             color: $blue;
           }
@@ -762,7 +670,7 @@ body {
             family: Arial, sans-serif;
             size: $line * 1.8;
           }
-          color: white;
+          color: $white;
         }
 
         .paragraph-instruction,

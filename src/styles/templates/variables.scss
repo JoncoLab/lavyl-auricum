@@ -1,13 +1,14 @@
 $line: 10px;
 $time: 0.3s;
 
-$lightBlue: #aad5ff;
-$blue: #7a90ff;
-$darkBlue: #578dff;
-$black: #505050;
+$lightBlue: #68bae4;
+$blue: #0096ea;
+$darkBlue: #006bb1;
+$white: white;
+$black: #343639;
 $green: #30b930;
 
-@mixin button($width: $line * 17,$color: $blue, $textColor: white) {
+@mixin button($width: $line * 17,$color: $blue, $textColor: $white) {
   border: none;
   outline: none;
   background: {
@@ -46,7 +47,7 @@ $green: #30b930;
   background: {
     color: darken($blue, 5);
   }
-  color: white;
+  color: $white;
   text: {
     align: center;
   }
@@ -90,7 +91,7 @@ $green: #30b930;
 @mixin orderInput($fontSize: $line * 2) {
   border: none;
   outline: none;
-  color: white;
+  color: $white;
   background: {
     color: darken($blue, 5);
   }
